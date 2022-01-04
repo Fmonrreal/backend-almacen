@@ -1,8 +1,8 @@
 ## Description
 
-...
+Backend API with NestJS for the project "Almacén"
 
-## Requirements (minimums)
+## Requirements (minimums)
 
 - NodeJS [16.13.0] (LTS Version)
 - MariaDB [10.5.13]
