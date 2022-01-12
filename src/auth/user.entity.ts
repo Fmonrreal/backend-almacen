@@ -22,19 +22,19 @@ export class User {
   @Column({ length: 60 })
   paternal_name: string;
 
-  @Column({ length: 60, nullable: true })
-  maternal_name: string;
+  // @Column({ length: 60, nullable: true })
+  // maternal_name: string;
 
-  @Column({ type: 'text', default: '[]' })
-  permissions: string;
+  // @Column({ type: 'text'})
+  // permissions: string;
 
-  @Column('datetime', { nullable: true })
-  loggedAt: Date;
+  // @Column('datetime', { nullable: true })
+  // loggedAt: Date;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  // @CreateDateColumn()
+  // createdAt: Date;
 
-  // @UpdateDateColumn()
-  @Column('datetime', { nullable: true })
-  updatedAt: Date;
+  // // @UpdateDateColumn()
+  // @Column('datetime', { nullable: true })
+  // updatedAt: Date;
 }

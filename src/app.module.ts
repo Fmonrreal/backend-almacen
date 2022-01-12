@@ -3,6 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { configValidationSchema } from './config.schema';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -20,7 +23,7 @@ import { configValidationSchema } from './config.schema';
           extra: {
             ssl: isPoduction ? { rejectUnauthorized: false } : null,
           },
-          type: 'mariadb',
+          type: 'mysql',
           autoLoadEntities: true,
           synchronize: true,
           host: configService.get('DB_HOST') || 'localhost',
@@ -31,7 +34,10 @@ import { configValidationSchema } from './config.schema';
         };
       },
     }),
-    AuthModule,
+    ProductModule,
+    // AuthModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

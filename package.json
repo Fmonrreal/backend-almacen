@@ -33,6 +33,7 @@
     "class-validator": "^0.13.2",
     "joi": "^17.5.0",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
     "passport": "^0.5.2",
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.13",
