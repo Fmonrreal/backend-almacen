@@ -26,7 +26,7 @@ export class AuthService {
     if (user && (await bcrypt.compare(password, user.password))) {
       const payload: JwtPayload = { email, permissions: [] };
       const accessToken: string = await this.jwtService.sign(payload);
-      return { accessToken };
+      return {  message:'Bienvenido' , accessToken };
     }
     throw new UnauthorizedException('Username/password incorrect.');
   }

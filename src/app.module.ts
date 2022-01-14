@@ -34,8 +34,8 @@ import { ProductModule } from './product/product.module';
         };
       },
     }),
-    ProductModule,
-    // AuthModule,
+    // ProductModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
