@@ -9,21 +9,23 @@ import * as bcrypt from 'bcrypt';
 
 @EntityRepository(User)
 export class UsersRepository extends Repository<User> {
-  //Agregue name, paternal_name para poder grabar
-  async createUser({ email, password}: AuthCredentialsDto): Promise<void> {
+  async createUser({ email, password,name,paternal_name,maternal_name,permissions}: AuthCredentialsDto): Promise<void> {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
-    //Agregue name, paternal_name para poder grabar
     const user = this.create({
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      name,
+      paternal_name,
+      maternal_name,
+      permissions
     });
     try {
       await this.save(user);
     } catch (error) {
       // check error.code
       console.log(error.code);
-      if (error.code === '23000') {
+      if (error.code === 'ER_DUP_ENTRY') {
         throw new ConflictException('Email already exists');
       }
       throw new InternalServerErrorException(

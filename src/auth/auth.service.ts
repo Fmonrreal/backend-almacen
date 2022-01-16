@@ -21,12 +21,13 @@ export class AuthService {
   async signIn({
     email,
     password,
-  }: AuthCredentialsDto): Promise<{ accessToken: string }> {
+  }: {email: string, password: string}): Promise<any> {
     const user = await this.usersRepository.findOne({ email });
     if (user && (await bcrypt.compare(password, user.password))) {
       const payload: JwtPayload = { email, permissions: [] };
       const accessToken: string = await this.jwtService.sign(payload);
-      return {  message:'Bienvenido' , accessToken };
+      const nameUser: string = user.name;
+      return {  message:'Bienvenido', nameUser, accessToken };
     }
     throw new UnauthorizedException('Username/password incorrect.');
   }

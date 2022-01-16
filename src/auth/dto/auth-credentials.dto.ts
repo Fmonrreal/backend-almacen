@@ -1,4 +1,4 @@
-import { IsString, Matches, MaxLength, MinLength } from 'class-validator';
+import { IsString, Matches, MaxLength, MinLength,IsDate,IsOptional } from 'class-validator';
 
 export class AuthCredentialsDto {
   @IsString()
@@ -19,9 +19,26 @@ export class AuthCredentialsDto {
   password: string;
 
 
-  // @IsString()
-  // name: string;
+  @IsString()
+  name: string;
 
-  // @IsString()
-  // paternal_name: string;
+  @IsString()
+  paternal_name: string;
+
+  @IsOptional()
+  @IsString()    
+  maternal_name: string;
+
+  @IsString()
+  permissions: string;
+
+  // @IsDate()
+  // loggedAt: Date;
+
+  // @IsDate()
+  // createdAt: Date;
+
+  // // @UpdateDateColumn()
+  // @Column('datetime', { nullable: true })
+  // updatedAt: Date;
 }
