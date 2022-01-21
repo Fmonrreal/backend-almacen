@@ -5,6 +5,8 @@ import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './jwt-payload.interface';
+import { getConnection } from 'typeorm';
+import { User } from './user.entity';
 
 @Injectable()
 export class AuthService {
@@ -31,4 +33,21 @@ export class AuthService {
     }
     throw new UnauthorizedException('Username/password incorrect.');
   }
+
+  async getAuth({
+    accessToken}: {accessToken: string}):Promise<any>{
+    
+    try {
+      // const cifrado: string = await this.jwtService.verify(accessToken);
+      // const email = cifrado;
+      // console.log(email);
+      // const user = await this.usersRepository.findOne({ email });
+      return { message:'Bienvenido' };
+    } catch (error) {
+        // res.status(401).json({msg: 'Token no válido'});
+    }
+      
+  }
 }
+
+  
