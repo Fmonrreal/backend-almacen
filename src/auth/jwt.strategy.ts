@@ -7,6 +7,7 @@ import { JwtPayload } from './jwt-payload.interface';
 import { User } from './user.entity';
 import { UsersRepository } from './users.repository';
 
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
@@ -20,11 +21,38 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate({ email }: JwtPayload): Promise<User> {
-    const user: User = await this.usersRepository.findOne({ email });
+  async validate({
+    email,
+  }: {email: string}): Promise<User> {
+    console.log(email);
+    const user: User = await this.usersRepository.findOne({email});
+    console.log(user);
     if (!user) {
+      console.log("no existe el ususario");
       throw new UnauthorizedException();
     }
     return user;
   }
+
+  async validate_token({
+    email,
+  }: {email: string}): Promise<User> {
+    console.log(email);
+    const user: User = await this.usersRepository.findOne({email});
+    console.log(user);
+    if (!user) {
+      console.log("no existe el ususario");
+      throw new UnauthorizedException();
+    }
+    return user;
+  }
+
+  // async validate({ email }: JwtPayload): Promise<User> {
+  //   const user: User = await this.usersRepository.findOne(email);
+  //   if (!user) {
+  //     console.log("no existe el ususario");
+  //     throw new UnauthorizedException();
+  //   }
+  //   return user;
+  // }
 }

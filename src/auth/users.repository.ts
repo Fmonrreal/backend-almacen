@@ -6,6 +6,9 @@ import { EntityRepository, Repository } from 'typeorm';
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { User } from './user.entity';
 import * as bcrypt from 'bcrypt';
+import { ConfigService } from '@nestjs/config';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+
 
 @EntityRepository(User)
 export class UsersRepository extends Repository<User> {
@@ -33,4 +36,26 @@ export class UsersRepository extends Repository<User> {
       );
     }
   }
+
+//   async getUserByName(email: string): Promise<User> {
+//     return this.usersRepository.findOne({ email });
+// }
+// async getUserByEmail(email: string): Promise<User> {
+//   console.log(email) 
+//   // const user: User = await this.usersRepository.findOne(email);
+//   if (!user) {
+//     console.log("no existe el ususario");
+//     throw new UnauthorizedException();
+//   }
+//   return user;
+// }
+
+// async validate({ email }: JwtPayload): Promise<User> {
+//   const user: User = await this.usersRepository.findOne(email);
+//   if (!user) {
+//     console.log("no existe el ususario");
+//     throw new UnauthorizedException();
+//   }
+//   return user;
+// }
 }

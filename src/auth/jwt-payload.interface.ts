@@ -1,4 +1,4 @@
 export interface JwtPayload {
   email: string;
-  permissions: Array<[string, number]>;
+  // permissions: Array<[string, number]>;
 }
