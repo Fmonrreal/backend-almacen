@@ -1,4 +1,4 @@
 export class ProductDto{
-    nombre?: string;
+    name?: string;
     precio?: number;
 }

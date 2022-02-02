@@ -89,7 +89,7 @@ export class AuthController {
     //     return this.authService.getUserByToken({xtoken});
     // }
 
-    @Get('/me')
+    @Get('/')
     getUserByToken(
       @Headers(){
         xtoken

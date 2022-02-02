@@ -108,6 +108,7 @@ async getUserByToken({
     const cifrado = this.jwtService.verify(xtoken);
     const email = cifrado.email
     return this.jwtStrategy.validate({email});
+    console.log("Token ha sido validado")
     // req.email = cifrado.email;
 } catch (error) {
     // res.status(401).json({msg: ''});
